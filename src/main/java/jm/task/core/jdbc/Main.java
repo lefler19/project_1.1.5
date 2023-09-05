@@ -1,7 +1,9 @@
 package jm.task.core.jdbc;
 
-import jm.task.core.jdbc.service.UserService;
-import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
+import jm.task.core.jdbc.util.Util;
+import org.hibernate.SessionFactory;
 
 
 import java.sql.SQLException;
@@ -9,7 +11,9 @@ import java.sql.SQLException;
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        UserService userService = new UserServiceImpl();
+        SessionFactory sessionFactory = Util.getSessionFactory();
+        UserDao userService = new UserDaoHibernateImpl(sessionFactory);
+
         userService.createUsersTable();
         userService.saveUser("Vova", "Smirnov", (byte) 20);
         userService.saveUser("Anna", "Mironova", (byte) 25);
