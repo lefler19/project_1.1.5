@@ -13,7 +13,7 @@ public class UserServiceImpl extends Util implements UserService {
     private final UserDao userDao = new UserDaoHibernateImpl();
 
 
-    public UserServiceImpl() throws SQLException {
+    public UserServiceImpl() {
     }
 
     public void createUsersTable() {
